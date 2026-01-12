@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Biodata | Maul Kuadrat</title>
+  <meta name="description" content="Website biodata pribadi sederhana dan responsif." />
+  <style>
+    :root{
+      --bg: #0b1220;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.08);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --line: rgba(255,255,255,.14);
+      --shadow: 0 18px 45px rgba(0,0,0,.35);
+    }
+    *{ box-sizing: border-box; }
+    body{
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+      color: var(--text);
+      background:
+        radial-gradient(900px 600px at 10% 10%, rgba(99,102,241,.28), transparent 60%),
+        radial-gradient(700px 500px at 90% 20%, rgba(236,72,153,.22), transparent 55%),
+        radial-gradient(800px 600px at 40% 90%, rgba(34,197,94,.18), transparent 60%),
+        var(--bg);
+      min-height: 100vh;
+    }
+    a{ color: inherit; text-decoration: none; }
+    .container{
+      width: min(1100px, 92vw);
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+    header{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      backdrop-filter: blur(10px);
+      border-radius: 18px;
+    }
+    .brand{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: .2px;
+    }
+    .dot{
+      width: 10px; height: 10px; border-radius: 999px;
+      background: linear-gradient(135deg, #6366f1, #ec4899, #22c55e);
+      box-shadow: 0 0 0 6px rgba(255,255,255,.05);
+    }
+    nav{
+      display: flex; gap: 10px; flex-wrap: wrap;
+    }
+    .pill{
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 14px;
+      transition: transform .15s ease, background .15s ease;
+    }
+    .pill:hover{ transform: translateY(-1px); background: rgba(255,255,255,.07); color: var(--text); }
+
+    .hero{
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+    .card{
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .card-inner{ padding: 20px; }
+
+    .headline{
+      font-size: clamp(26px, 3.2vw, 42px);
+      line-height: 1.12;
+      margin: 0 0 10px;
+      letter-spacing: -.6px;
+    }
+    .sub{
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.55;
+      max-width: 62ch;
+    }
+    .cta{
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .btn{
+      padding: 10px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      font-weight: 700;
+      font-size: 14px;
+      transition: transform .15s ease, background .15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.10); }
+    .btn.primary{
+      border-color: rgba(99,102,241,.45);
+      background: linear-gradient(135deg, rgba(99,102,241,.35), rgba(236,72,153,.20));
+    }
+
+    /* Profile card */
+    .profile{
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 14px;
+      align-items: center;
+    }
+    .avatar{
+      width: 92px; height: 92px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(80px 80px at 30% 30%, rgba(255,255,255,.18), transparent 60%),
+        linear-gradient(135deg, rgba(99,102,241,.35), rgba(34,197,94,.20));
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      letter-spacing: .5px;
+    }
+    .meta h2{
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: -.2px;
+    }
+    .meta p{
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .chips{
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .chip{
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-weight: 650;
+      font-size: 12.5px;
+    }
+
+    /* Sections grid */
+    .grid{
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+    .section-title{
+      margin: 0 0 10px;
+      font-size: 15px;
+      letter-spacing: .2px;
+    }
+    .list{
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .item{
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+    }
+    .k{
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      margin-bottom: 3px;
+    }
+    .v{
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    footer{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero{ grid-template-columns: 1fr; }
+      .grid{ grid-template-columns: 1fr; }
+      header{ flex-direction: column; align-items: flex-start; }
+      nav{ width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <span class="dot"></span>
+        <span>Biodata Pribadi</span>
+      </div>
+      <nav>
+        <a class="pill" href="#tentang">Tentang</a>
+        <a class="pill" href="#biodata">Biodata</a>
+        <a class="pill" href="#skill">Keahlian</a>
+        <a class="pill" href="#kontak">Kontak</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="tentang">
+      <div class="card">
+        <div class="card-inner">
+          <h1 class="headline">Halo, saya <span style="color:#c7d2fe">Rakin Keiva</span>.</h1>
+          <p class="sub">
+            Saya mahasiswa Universitas Bhayangkara Jakarta Raya fakultas Teknik Industri semester 1
+          </p>
+          <div class="cta">
+            <a class="btn primary" href="#Kontak">✉️ Hubungi Saya</a>
+            <a class="btn" href="#biodata">📌 Lihat Biodata</a>
+          </div>
+        </div>
+      </div>
+
+      <aside class="card">
+        <div class="card-inner">
+          <div class="profile">
+                 <img class="avatar" src="img/rakin.JPEG" alt="Foto Saya" style="object-fit:cover;" />
+
+            <div class="meta">
+              <h2>Rakin Keiva</h2>
+              <p>NPM:202510215105 / Universitas Bhayangkara / Teknik Industri<br/>Domisili: Indonesia</p>
+              <div class="chips">
+                <span class="chip">HTML</span>
+                <span class="chip">CSS</span>
+                <span class="chip">Responsive</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="grid" id="biodata">
+      <div class="card">
+        <div class="card-inner">
+          <h3 class="section-title">Biodata Singkat</h3>
+          <ul class="list">
+            <li class="item"><div class="k">Nama</div><div class="v">Rakin Keiva</div></li>
+            <li class="item"><div class="k">Tanggal Lahir</div><div class="v">21 Agustus 2007</div></li>
+            <li class="item"><div class="k">Pendidikan</div><div class="v">SMA  </div></li>
+            <li class="item"><div class="k">Hobi</div><div class="v">Belajar, motoran, olahraga</div></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" id="skill">
+        <div class="card-inner">
+          <h3 class="section-title">Keahlian</h3>
+          <ul class="list">
+            <li class="item"><div class="k">Frontend</div><div class="v">HTML, CSS, dasar JavaScript</div></li>
+            <li class="item"><div class="k">Desain</div><div class="v">Layout rapi, UI sederhana</div></li>
+            <li class="item"><div class="k">Soft Skill</div><div class="v">Komunikasi, disiplin, teamwork</div></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" id="kontak">
+        <div class="card-inner">
+          <h3 class="section-title">Kontak</h3>
+          <ul class="list">
+            <li class="item"><div class="k">Email</div><div class="v"><a href="mailto:rakinkeiva21@gmail.com">rakinkeiva21@gmail.com</a></div></li>
+            <li class="item"><div class="k">WhatsApp</div><div class="v"><a href="https://wa.me/6285213919615" target="_blank" rel="noreferrer">+62 852-1391-9615</a></div></li>
+            <li class="item"><div class="k">Instagram</div><div class="v"><a href="https://instagram.com/rakinkvaa" target="_blank" rel="noreferrer">@rakinkvaa</a></div></li>
+            <li class="item"><div class="k">Alamat</div><div class="v">Bekasi, Jawa barat</div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="y"></span> Rakin Keiva • Dibuat dengan HTML & CSS
+    </footer>
+  </div>
+
+  <script>
+    // Tahun otomatis
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
